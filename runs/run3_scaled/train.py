@@ -47,7 +47,7 @@ def main():
     args = ap.parse_args()
     assert args.steps <= MAX_STEPS, f"cap: max {MAX_STEPS} steps"
     torch.manual_seed(args.seed)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
     print(f"device: {device}")
 
     text = open(args.data, encoding="utf-8").read()

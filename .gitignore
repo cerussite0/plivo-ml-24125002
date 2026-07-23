@@ -1,4 +1,4 @@
-# Python / PyTorch temporary files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -12,10 +12,22 @@ env/
 .vscode/
 .gemini/
 
-# Large binary tokenized cache files (keep ckpt.pt tracked!)
+# Large binary files — pre-encoded token caches, intermediate checkpoints
+runs/*.pt
+runs/**/ckpt*.pt
+runs/__pycache__/
+
+# Keep only the final checkpoint
 *.pt
 !ckpt.pt
 
-# Ignore problem prompt / assignment description files
+# Assignment source files (not deliverables)
 job_desc.txt
 problem_statement.txt
+
+# Training data (provided separately, not a deliverable)
+llm_handout/data/
+
+# OS
+.DS_Store
+Thumbs.db

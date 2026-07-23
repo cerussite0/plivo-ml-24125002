@@ -76,7 +76,7 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
@@ -230,34 +230,44 @@
 
         <div class="grid">
             <div class="card">
-                <h3>Final Score (BPB)</h3>
+                <h3>Dev BPB (Official)</h3>
                 <div class="metric">1.7101</div>
-                <div class="subtext">&Delta; &minus;0.6617 from baseline</div>
+                <div class="subtext">&Delta; &minus;0.6617 from baseline (2.3718)</div>
             </div>
             <div class="card">
-                <h3>Per-Byte PPL</h3>
+                <h3>Per-Byte Perplexity</h3>
                 <div class="metric">3.2718</div>
-                <div class="subtext">2^1.7101 per-byte perplexity</div>
+                <div class="subtext">2<sup>1.7101</sup></div>
             </div>
             <div class="card">
-                <h3>Per-Token PPL</h3>
-                <div class="metric">27.02</div>
-                <div class="subtext">3.2968 nats cross-entropy loss</div>
+                <h3>Train Loss (Final)</h3>
+                <div class="metric">2.2799</div>
+                <div class="subtext">Per-token PPL 9.78 (avg last 50 steps)</div>
             </div>
             <div class="card">
-                <h3>Corpus Compression</h3>
-                <div class="metric">2.78x</div>
-                <div class="subtext">159.2KB &rarr; 57.2K tokens</div>
+                <h3>Eval Tokens Scored</h3>
+                <div class="metric">57,248</div>
+                <div class="subtext">of 57,249 total (sliding window)</div>
             </div>
             <div class="card">
                 <h3>Param Count</h3>
-                <div class="metric">1.97M</div>
-                <div class="subtext">98.5% of 2.0M budget</div>
+                <div class="metric">1,970,880</div>
+                <div class="subtext">98.5% of 2M budget</div>
             </div>
             <div class="card">
-                <h3>Total Experiments</h3>
-                <div class="metric">10 Runs</div>
-                <div class="subtext">Ablations &amp; optimizer sweeps</div>
+                <h3>Optimizer Steps</h3>
+                <div class="metric">2,000</div>
+                <div class="subtext">eff. batch 64, ~65.5M tokens seen</div>
+            </div>
+            <div class="card">
+                <h3>BPE Compression</h3>
+                <div class="metric">2.78x</div>
+                <div class="subtext">159.2 KB &rarr; 57.2K tokens (dev)</div>
+            </div>
+            <div class="card">
+                <h3>Experiments Run</h3>
+                <div class="metric">10</div>
+                <div class="subtext">Architecture, optimizer, schedule ablations</div>
             </div>
         </div>
 

@@ -36,7 +36,7 @@ def main():
     args = ap.parse_args()
     assert args.steps <= MAX_STEPS
     torch.manual_seed(args.seed)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
     print(f"device: {device}")
 
     text = open(args.data, encoding="utf-8").read()

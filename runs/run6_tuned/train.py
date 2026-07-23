@@ -38,7 +38,7 @@ def main():
     assert args.steps <= MAX_STEPS
     assert args.data or args.token_ids, "Provide --data or --token_ids"
     torch.manual_seed(args.seed)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
     print(f"device: {device}")
 
     tok = tokenizer_mod.load()

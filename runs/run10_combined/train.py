@@ -62,7 +62,7 @@ def main():
     args = ap.parse_args()
     assert args.steps <= MAX_STEPS
     torch.manual_seed(args.seed)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
     print(f"device: {device}, schedule: {args.schedule}, decay_frac: {args.decay_frac}")
 
     # Load pre-encoded token IDs
