@@ -12,10 +12,10 @@ env/
 .vscode/
 .gemini/
 
-# Large tokenized cache files (keep ckpt.pt tracked!)
+# Large binary tokenized cache files (keep ckpt.pt tracked!)
 *.pt
 !ckpt.pt
 
-# Internal experiment runs directory
-runs/
-llm_handout/
+# Ignore problem prompt / assignment description files
+job_desc.txt
+problem_statement.txt
