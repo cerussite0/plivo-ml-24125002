@@ -1,0 +1,80 @@
+Plivo India Private Limited :Submission of Biodata for Pre-Final Year Students
+
+AI/ML Engineer Intern :
+    projects in TTS (text-to-speech), STT (speech-to-text / speech recognition), or LLMs (training, fine-tuning, or building with language models).
+
+NOTE : Candidates are advised to review these criteria before appearing, as the assignment assumes working familiarity with at least one of these areas
+
+Location : Bengaluru, Karnataka
+
+Stipend: AI/ML - 1.75 LPM
+
+Selection Process:  Resume-based Shortlisting-> Test-> Interviews
+
+
+Job Description: 
+
+AI/ML Engineer – Plivo, Bengaluru
+About Plivo
+Plivo is a global leader in powering customer engagement for some of the world’s largest B2C brands including Uber, WhatsApp and Zomato. Our AI Agents Platform automates the entire customer lifecycle, from acquisition to engagement and support using cutting-edge multimodal AI combining LLMs, speech-to-text, text-to-speech and real-time voice intelligence. We operate at global scale with high-impact products that handle over 1 billion API requests per month. We’re now looking for the brightest, most passionate AI/ML minds to help shape the future of real-time AI systems.
+
+Role Overview:
+As an AI/ML Engineer at Plivo, you will design, train, and ship production models that power real-time voice and conversational agents used by customers around the world. You will own problems end to end, from data and modeling through inference pipelines and the latency, accuracy, and reliability of what finally runs in production. The work is hands-on and high-ownership, with real impact from day one, and it sits right where real-time systems meet applied AI.
+
+Key Responsibilities
+
+● Train, fine-tune, and deploy models for speech recognition, speaker isolation,
+turn detection, and language understanding across multiple languages and
+verticals.
+● Build and optimize inference pipelines for real-time, global-scale traffic,
+balancing latency, accuracy, and throughput.
+● Work on the systems behind our agent platform: orchestration, model evals,
+and MCP-based integrations, retrieval, evaluation, and the guardrails that keep
+agents reliable in production.
+● Research and build low latency models that run at a fraction of the cost via
+CPU at a production scale
+● Turn large and messy datasets into signals, surfacing the patterns and
+improvements that move model performance.
+● Partner closely with engineering, product, and data teams to take features from
+prototype to production.
+● Build internal tooling, evaluate open-source frameworks, and bring in what is
+worth adopting.
+● Keep pace with progress in LLMs, generative AI, and voice intelligence, and
+apply it where it earns its place.
+
+What We’re Looking For
+
+● A strong grasp of ML fundamentals: classical algorithms, deep learning, and
+the mechanics of training and evaluating models.
+● Fluency in Python and hands-on experience with PyTorch, TensorFlow, or
+Hugging Face Transformers.
+● Real projects you have built and can defend in depth, across NLP, ASR, TTS,
+embeddings, agents, or similar. Strong competition or open-source work
+counts for a lot.
+● A solid command of data processing, feature engineering, and model
+evaluation.
+● Clear thinking, a bias for shipping, and the communication skills to work well
+across teams.
+● Attention to detail and key understanding of a problem from a customer
+perspective
+Nice to Have
+● Experience deploying models in real-time production systems.
+● Familiarity with MLOps tooling and pipelines.
+
+4
+● Hands-on work with speech, voice, or multimodal data.
+● Open-source contributions, or models built from scratch.
+● Exposure to LLM agents, orchestration frameworks, or retrieval-augmented
+generation.
+
+Why Join Plivo?
+
+● You will build models that run in production for global brands, not demos that
+never ship.
+● You will work with real speech and language data at a very large scale.
+● You will sit at the intersection of real-time systems and applied AI, which is a
+genuinely rare combination.
+● You will have high ownership and the autonomy to act on it, inside a fast-
+moving engineering culture.
+● You will help shape the AI Agents Platform that top brands use to run their
+entire customer lifecycle.

@@ -1,0 +1,21 @@
+# Python / PyTorch temporary files
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Environment & IDE
+.venv/
+venv/
+env/
+.idea/
+.vscode/
+.gemini/
+
+# Large tokenized cache files (keep ckpt.pt tracked!)
+*.pt
+!ckpt.pt
+
+# Internal experiment runs directory
+runs/
+llm_handout/

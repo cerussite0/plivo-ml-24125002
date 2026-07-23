@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2,000 Step LLM Speedrun — Final Summary</title>
+    <style>
+        :root {
+            --bg: #090d16;
+            --card-bg: #111827;
+            --border: #1f293d;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --green: #10b981;
+            --purple: #8b5cf6;
+            --orange: #f59e0b;
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 1rem;
+            background: radial-gradient(circle at top, #1e293b 0%, var(--bg) 80%);
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            font-size: 0.875rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .metric {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .card .subtext {
+            font-size: 0.875rem;
+            color: var(--green);
+            margin-top: 0.25rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.75rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        tr.winner {
+            background: rgba(16, 185, 129, 0.08);
+            font-weight: 600;
+        }
+
+        tr.winner td:first-child {
+            color: var(--green);
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pill-win { background: rgba(16, 185, 129, 0.2); color: var(--green); }
+        .pill-fail { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #d1d5db;
+        }
+
+        li::before {
+            content: "➔";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .split-bar {
+            height: 12rem;
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .split-col {
+            flex: 1;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+        }
+
+        .split-col h4 {
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.875rem;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="badge">LLM SPEEDRUN SUBMISSION</span>
+            <h1>2,000 Step LLM Speedrun Summary</h1>
+            <p class="subtitle">1.7101 Bits Per Byte (BPB) • 1,970,880 Parameters • Pure PyTorch</p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Final Score (BPB)</h3>
+                <div class="metric">1.7101</div>
+                <div class="subtext">Δ -0.6617 from baseline</div>
+            </div>
+            <div class="card">
+                <h3>Per-Byte PPL</h3>
+                <div class="metric">3.2718</div>
+                <div class="subtext">2^1.7101 per-byte perplexity</div>
+            </div>
+            <div class="card">
+                <h3>Per-Token PPL</h3>
+                <div class="metric">27.02</div>
+                <div class="subtext">3.2968 nats cross-entropy loss</div>
+            </div>
+            <div class="card">
+                <h3>Corpus Compression</h3>
+                <div class="metric">2.78x</div>
+                <div class="subtext">159.2KB → 57.2K tokens</div>
+            </div>
+            <div class="card">
+                <h3>Param Count</h3>
+                <div class="metric">1.97M</div>
+                <div class="subtext">98.5% of 2.0M budget</div>
+            </div>
+            <div class="card">
+                <h3>Total Experiments</h3>
+                <div class="metric">10 Runs</div>
+                <div class="subtext">Ablations & Optimizers</div>
+            </div>
+        </div>
+
+        <section>
+            <h2>🏆 Winning Architecture (Run 5)</h2>
+            <ul>
+                <li><strong>BPE Tokenizer (vocab 1024 / 768 merges)</strong>: Trained directly on corpus bytes, compressing Hindi Devanagari text by 5.0x and eliminating token inflation.</li>
+                <li><strong>Rotary Positional Embeddings (RoPE)</strong>: Parameter-free relative positioning, freeing 49.1K parameters for vocabulary expansion and doubling context block size to 512 tokens (~1,400 bytes).</li>
+                <li><strong>SwiGLU MLP + RMSNorm</strong>: Gated non-linear activations with hidden dimension 512 and parameter-free root-mean-square normalization.</li>
+                <li><strong>Tied Embedding Weights</strong>: Shares input embedding table weights with the output logit head.</li>
+                <li><strong>AdamW Optimization</strong>: Cosine decay schedule (peak 6e-4, min 6e-5, warmup 100), weight decay 0.1, gradient accumulation = 8 (effective batch size 64).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📊 Full RUNLOG Results</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Run</th>
+                        <th>Dev BPB</th>
+                        <th>Δ Baseline</th>
+                        <th>Params</th>
+                        <th>Status</th>
+                        <th>Key Modification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. Baseline</td>
+                        <td>2.3718</td>
+                        <td>—</td>
+                        <td>1,339,840</td>
+                        <td>—</td>
+                        <td>Starter un-tuned model</td>
+                    </tr>
+                    <tr>
+                        <td>2. Quick Wins</td>
+                        <td>2.0645</td>
+                        <td>-0.3073</td>
+                        <td>1,298,880</td>
+                        <td><span class="pill pill-win">WIN</span></td>
+                        <td>AdamW, cosine LR, weight tying, accum=8</td>
+                    </tr>
+                    <tr>
+                        <td>3. Scaled Arch</td>
+                        <td>1.9000</td>
+                        <td>-0.4718</td>
+                        <td>1,872,576</td>
+                        <td><span class="pill pill-win">WIN</span></td>
+                        <td>SwiGLU, RMSNorm, n_embd=192, block=256</td>
+                    </tr>
+                    <tr>
+                        <td>4. BPE Tokenizer</td>
+                        <td>1.7418</td>
+                        <td>-0.6300</td>
+                        <td>1,970,880</td>
+                        <td><span class="pill pill-win">WIN</span></td>
+                        <td>BPE vocab 768, 2.5x compression</td>
+                    </tr>
+                    <tr class="winner">
+                        <td>5. RoPE + BPE (Best)</td>
+                        <td>1.7101</td>
+                        <td>-0.6617</td>
+                        <td>1,970,880</td>
+                        <td><span class="pill pill-win">BEST</span></td>
+                        <td>RoPE, BPE vocab 1024, block=512</td>
+                    </tr>
+                    <tr>
+                        <td>6. Label Smoothing</td>
+                        <td>1.7815</td>
+                        <td>-0.5903</td>
+                        <td>1,970,880</td>
+                        <td><span class="pill pill-fail">REGRESSED</span></td>
+                        <td>Label smooth 0.1 (soft targets hurt BPB NLL)</td>
+                    </tr>
+                    <tr>
+                        <td>7a. Muon (LR 0.02)</td>
+                        <td>1.8408</td>
+                        <td>-0.5310</td>
+                        <td>1,970,880</td>
+                        <td><span class="pill pill-fail">AMBITIOUS FAIL</span></td>
+                        <td>Newton-Schulz matrix orthogonalization</td>
+                    </tr>
+                    <tr>
+                        <td>7b. Muon (LR 0.01)</td>
+                        <td>1.8190</td>
+                        <td>-0.5528</td>
+                        <td>1,970,880</td>
+                        <td><span class="pill pill-fail">AMBITIOUS FAIL</span></td>
+                        <td>Lower LR Muon for 2D weights</td>
+                    </tr>
+                    <tr>
+                        <td>8. Overfit Fix</td>
+                        <td>1.8469</td>
+                        <td>-0.5249</td>
+                        <td>1,970,880</td>
+                        <td><span class="pill pill-fail">REGRESSED</span></td>
+                        <td>accum=4, dropout=0.05 (starved tokens)</td>
+                    </tr>
+                    <tr>
+                        <td>9. WSD Schedule</td>
+                        <td>1.8103</td>
+                        <td>-0.5615</td>
+                        <td>1,970,880</td>
+                        <td><span class="pill pill-win">ABLATION WIN</span></td>
+                        <td>WSD schedule (-0.0366 vs Run 8)</td>
+                    </tr>
+                    <tr>
+                        <td>10. QK-Norm + WSD</td>
+                        <td>1.9111</td>
+                        <td>-0.4607</td>
+                        <td>1,968,064</td>
+                        <td><span class="pill pill-fail">REGRESSED</span></td>
+                        <td>QK-Norm forced soft attention logits</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>🧠 Human vs. Machine Work Split</h2>
+            <div class="split-bar">
+                <div class="split-col">
+                    <h4>👨‍💻 Human Reasoning & Strategy (40%)</h4>
+                    <ul>
+                        <li>Identified Devanagari byte-inflation problem and calculated token compression potential.</li>
+                        <li>Formulated hypothesis on Newton-Schulz (Muon) vs AdamW matrix update geometry at 2M scale.</li>
+                        <li>Analyzed log-likelihood NLL mechanics explaining why Label Smoothing & QK-Norm degrade BPB score.</li>
+                    </ul>
+                </div>
+                <div class="split-col">
+                    <h4>🤖 Machine Execution & Optimization (60%)</h4>
+                    <ul>
+                        <li>Automated numpy-vectorized BPE merge pair counting and fast corpus tokenization.</li>
+                        <li>Implemented pure PyTorch RoPE, SwiGLU, RMSNorm, and Muon Newton-Schulz 5th-order iterations.</li>
+                        <li>Executed sequential experimental training loops and official evaluation harness validation.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Generated by Antigravity AI Coding Assistant • Built for 2,000 Step LLM Speedrun</p>
+        </footer>
+    </div>
+</body>
+</html>
